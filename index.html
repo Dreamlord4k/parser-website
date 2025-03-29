@@ -8,14 +8,32 @@
 </head>
 <body>
     <header>
-        <h1>Добро пожаловать на Syntax Parser</h1>
+        <h1 id="typing-effect">Syntax Parser</h1>
     </header>
     <main>
-        <p>Этот проект позволяет парсить оценки и пропуски из электронного дневника и отправлять их в Telegram-бот.</p>
+        <p>Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru и получать информацию об их изменении через Telegram-бот.</p>
         <img src="assets/galaxy.jpg" alt="Galaxy Background" class="background-image">
     </main>
     <footer>
         <p>© 2025 Syntax Parser. Все права защищены.</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = "Syntax Parser";
+            const element = document.getElementById("typing-effect");
+            let index = 0;
+    
+            function typeEffect() {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                    setTimeout(typeEffect, 100); // Скорость печати (100 мс)
+                }
+            }
+    
+            element.textContent = ""; // Очистить текст перед началом
+            typeEffect();
+        });
+    </script>
 </body>
 </html>
