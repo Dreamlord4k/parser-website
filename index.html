@@ -21,8 +21,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const headerText = "Syntax Parser";
-            const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru и получать информацию об их изменении через Telegram-бот.";
-            const paragraphText2 = "Всё это делается автоматически и удобно для пользователей.";
+            const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
+            const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
             const headerElement = document.getElementById("typing-effect");
             const paragraphElement1 = document.getElementById("typing-effect-paragraph");
             const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
@@ -50,7 +50,7 @@
                 if (paragraphIndex1 < paragraphText1.length) {
                     paragraphElement1.textContent += paragraphText1[paragraphIndex1];
                     paragraphIndex1++;
-                    setTimeout(typeParagraph1, 50); // Скорость печати первого параграфа
+                    setTimeout(typeParagraph1, 80); // Скорость печати первого параграфа
                 } else {
                     // После завершения анимации первого параграфа, начать анимацию второго параграфа
                     setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
@@ -61,7 +61,7 @@
                 if (paragraphIndex2 < paragraphText2.length) {
                     paragraphElement2.textContent += paragraphText2[paragraphIndex2];
                     paragraphIndex2++;
-                    setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
+                    setTimeout(typeParagraph2, 80); // Скорость печати второго параграфа
                 }
             }
     
