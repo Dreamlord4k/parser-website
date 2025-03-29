@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'minecraft';
+    src: url('assets/fonts/minecraft.ttf') format('truetype');
+}
+
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'minecraft', monospace;
     margin: 0;
     padding: 0;
     background-color: #000;
@@ -13,6 +18,7 @@ header {
 }
 
 header h1 {
+    font-family: 'minecraft', monospace;
     margin: 0;
     font-size: 2.5em;
 }
