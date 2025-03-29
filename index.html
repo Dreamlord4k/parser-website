@@ -11,7 +11,8 @@
         <h1 id="typing-effect">Syntax Parser</h1>
     </header>
     <main>
-        <p id="typing-effect-paragraph">Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru и получать информацию об их изменении через Telegram-бот.</p>
+        <p id="typing-effect-paragraph">Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru</p>
+        <p id="typing-effect-paragraph-2">С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.</p>
         <img src="assets/galaxy.jpg" alt="Galaxy Background" class="background-image">
     </main>
     <footer>
@@ -20,15 +21,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const headerText = "Syntax Parser";
-            const paragraphText = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru и получать информацию об их изменении через Telegram-бот.";
+            const paragraphText = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
+            const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
             const headerElement = document.getElementById("typing-effect");
             const paragraphElement = document.getElementById("typing-effect-paragraph");
             let headerIndex = 0;
             let paragraphIndex = 0;
+            let paragraphIndex2 = 0;
     
             // Очистить текст перед началом анимации
             headerElement.textContent = "";
             paragraphElement.textContent = "";
+            paragraphElement2.textContent = "";
     
             function typeHeader() {
                 if (headerIndex < headerText.length) {
@@ -48,7 +52,15 @@
                     setTimeout(typeParagraph, 50); // Скорость печати параграфа
                 }
             }
-    
+
+            function typeParagraph2() {
+            if (paragraphIndex2 < paragraphText2.length) {
+                paragraphElement2.textContent += paragraphText2[paragraphIndex2];
+                paragraphIndex2++;
+                setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
+                }
+            } 
+            
             // Запуск анимации заголовка
             typeHeader();
         });
