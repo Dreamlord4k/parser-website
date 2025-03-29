@@ -21,17 +21,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const headerText = "Syntax Parser";
-            const paragraphText = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
-            const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
+            const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru и получать информацию об их изменении через Telegram-бот.";
+            const paragraphText2 = "Всё это делается автоматически и удобно для пользователей.";
             const headerElement = document.getElementById("typing-effect");
-            const paragraphElement = document.getElementById("typing-effect-paragraph");
+            const paragraphElement1 = document.getElementById("typing-effect-paragraph");
+            const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
             let headerIndex = 0;
-            let paragraphIndex = 0;
+            let paragraphIndex1 = 0;
             let paragraphIndex2 = 0;
     
             // Очистить текст перед началом анимации
             headerElement.textContent = "";
-            paragraphElement.textContent = "";
+            paragraphElement1.textContent = "";
             paragraphElement2.textContent = "";
     
             function typeHeader() {
@@ -40,27 +41,30 @@
                     headerIndex++;
                     setTimeout(typeHeader, 100); // Скорость печати заголовка
                 } else {
-                    // После завершения анимации заголовка, начать анимацию параграфа
-                    setTimeout(typeParagraph, 500); // Задержка перед началом анимации параграфа
+                    // После завершения анимации заголовка, начать анимацию первого параграфа
+                    setTimeout(typeParagraph1, 500); // Задержка перед началом анимации первого параграфа
                 }
             }
     
-            function typeParagraph() {
-                if (paragraphIndex < paragraphText.length) {
-                    paragraphElement.textContent += paragraphText[paragraphIndex];
-                    paragraphIndex++;
-                    setTimeout(typeParagraph, 50); // Скорость печати параграфа
+            function typeParagraph1() {
+                if (paragraphIndex1 < paragraphText1.length) {
+                    paragraphElement1.textContent += paragraphText1[paragraphIndex1];
+                    paragraphIndex1++;
+                    setTimeout(typeParagraph1, 50); // Скорость печати первого параграфа
+                } else {
+                    // После завершения анимации первого параграфа, начать анимацию второго параграфа
+                    setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
                 }
             }
-
+    
             function typeParagraph2() {
-            if (paragraphIndex2 < paragraphText2.length) {
-                paragraphElement2.textContent += paragraphText2[paragraphIndex2];
-                paragraphIndex2++;
-                setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
+                if (paragraphIndex2 < paragraphText2.length) {
+                    paragraphElement2.textContent += paragraphText2[paragraphIndex2];
+                    paragraphIndex2++;
+                    setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
                 }
-            } 
-            
+            }
+    
             // Запуск анимации заголовка
             typeHeader();
         });
