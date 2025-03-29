@@ -26,6 +26,10 @@
             let headerIndex = 0;
             let paragraphIndex = 0;
     
+            // Очистить текст перед началом анимации
+            headerElement.textContent = "";
+            paragraphElement.textContent = "";
+    
             function typeHeader() {
                 if (headerIndex < headerText.length) {
                     headerElement.textContent += headerText[headerIndex];
@@ -45,9 +49,7 @@
                 }
             }
     
-            // Очистить текст перед началом анимации
-            headerElement.textContent = "";
-            paragraphElement.textContent = "";
+            // Запуск анимации заголовка
             typeHeader();
         });
     </script>
