@@ -65,7 +65,7 @@ main {
     font-size: 16px; /* Размер шрифта */
     color: #fff; /* Цвет текста */
     text-align: center; /* Центрирование текста */
-    margin-top: 50px; /* Отступ сверху для левого текста */
+    margin-top: 600px; /* Отступ сверху для левого текста */
 }
 
 .right-text {
@@ -82,4 +82,30 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+/* Стили для контейнера ссылок */
+.social-links {
+    display: flex; /* Располагает ссылки в строку */
+    justify-content: center; /* Центрирует ссылки по горизонтали */
+    gap: 20px; /* Расстояние между ссылками */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+/* Стили для ссылок */
+.social-links a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: #fff; /* Цвет иконок */
+    transition: transform 0.3s ease, color 0.3s ease; /* Анимация при наведении */
+}
+
+/* Стили для иконок */
+.social-links a svg {
+    width: 40px; /* Размер иконок */
+    height: 40px;
+}
+
+/* Эффект при наведении */
+.social-links a:hover {
+    transform: scale(1.2); /* Увеличение при наведении */
+    color: #00bfff; /* Изменение цвета при наведении */
 }
