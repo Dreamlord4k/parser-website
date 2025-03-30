@@ -75,7 +75,7 @@
             if (paragraphIndex1 < paragraphText1.length) {
                 paragraphElement1.textContent += paragraphText1[paragraphIndex1];
                 paragraphIndex1++;
-                setTimeout(typeParagraph1, 50); // Скорость печати первого параграфа
+                setTimeout(typeParagraph1, 30); // Скорость печати первого параграфа
             } else {
                 // После завершения анимации первого параграфа, начать анимацию второго параграфа
                 setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
@@ -86,7 +86,7 @@
             if (paragraphIndex2 < paragraphText2.length) {
                 paragraphElement2.textContent += paragraphText2[paragraphIndex2];
                 paragraphIndex2++;
-                setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
+                setTimeout(typeParagraph2, 25); // Скорость печати второго параграфа
             } else {
                 // После завершения анимации второго параграфа, начать анимацию строк слева
                 setTimeout(showLeftTextLines, 500); // Задержка перед началом анимации строк слева
@@ -98,7 +98,7 @@
                 leftTextLines[leftTextIndex].style.opacity = "1"; // Плавное появление строки
                 leftTextLines[leftTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
                 leftTextIndex++;
-                setTimeout(showLeftTextLines, 1000); // Задержка перед появлением следующей строки
+                setTimeout(showLeftTextLines, 2000); // Задержка перед появлением следующей строки
             }
         }
 
