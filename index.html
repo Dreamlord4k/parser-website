@@ -48,18 +48,22 @@
         const paragraphElement1 = document.getElementById("typing-effect-paragraph");
         const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
         const leftTextContainer = document.getElementById("left-text-container");
-        const leftTextLines = leftTextContainer.querySelectorAll("p");
+        const leftTextLines = leftTextContainer.querySelectorAll("p:not(.additional-text p)");
+        const additionalTextContainer = document.getElementById("additional-text-container");
+        const additionalTextLines = additionalTextContainer.querySelectorAll("p");
 
         let headerIndex = 0;
         let paragraphIndex1 = 0;
         let paragraphIndex2 = 0;
         let leftTextIndex = 0;
+        let additionalTextIndex = 0;
 
         // Очистить текст перед началом анимации
         headerElement.textContent = "";
         paragraphElement1.textContent = "";
         paragraphElement2.textContent = "";
         leftTextLines.forEach(line => line.style.opacity = "0"); // Скрыть строки слева
+        additionalTextLines.forEach(line => line.style.opacity = "0"); // Скрыть строки дополнительного текста
 
         function typeHeader() {
             if (headerIndex < headerText.length) {
@@ -99,13 +103,25 @@
                 leftTextLines[leftTextIndex].style.opacity = "1"; // Плавное появление строки
                 leftTextLines[leftTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
                 leftTextIndex++;
-                setTimeout(showLeftTextLines, 2000); // Задержка перед появлением следующей строки
+                setTimeout(showLeftTextLines, 1000); // Задержка перед появлением следующей строки
+            } else {
+                // После завершения анимации строк слева, начать анимацию дополнительного текста
+                setTimeout(showAdditionalTextLines, 500);
+            }
+        }
+
+        function showAdditionalTextLines() {
+            if (additionalTextIndex < additionalTextLines.length) {
+                additionalTextLines[additionalTextIndex].style.opacity = "1"; // Плавное появление строки
+                additionalTextLines[additionalTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
+                additionalTextIndex++;
+                setTimeout(showAdditionalTextLines, 1000); // Задержка перед появлением следующей строки
             }
         }
 
         // Запуск анимации заголовка
         typeHeader();
-    });
+    }); 
     </script>
 </body>
 </html>
