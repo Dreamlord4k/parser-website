@@ -92,12 +92,20 @@ footer {
     margin-top: 20px;
 }
 
+/* Стили для контейнера ссылок */
+.social-links {
+    position: absolute; /* Позволяет задать точное положение */
+    top: 20px; /* Отступ от верхнего края */
+    left: 20px; /* Отступ от левого края */
+    display: flex; /* Расположение иконок в строку */
+    gap: 10px; /* Расстояние между иконками */
+}
+
 .social-links a {
     display: flex;
-    justify-content: center; /* Центрирование по горизонтали */
+    justify-content: left; /* Центрирование по горизонтали */
     gap: 20px; /* Расстояние между иконками */
-    margin-top: 20px; /* Отступ сверху */
-    margin-bottom: 20px; /* Отступ снизу */
+    margin-bottom: 10px; /* Отступ снизу */
 }
 
 .social-links .icon {
