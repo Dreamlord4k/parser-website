@@ -82,6 +82,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 40px; 
 }
 /* Стили для контейнера ссылок */
 .social-links {
@@ -92,7 +93,11 @@ footer {
 }
 
 .social-links a {
-    text-decoration: none;
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    gap: 20px; /* Расстояние между иконками */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 .social-links .icon {
@@ -104,4 +109,11 @@ footer {
 .social-links .icon:hover {
     transform: scale(1.2); /* Увеличение при наведении */
     filter: brightness(1.5); /* Осветление при наведении */
+}
+
+@media (max-width: 768px) {
+    .social-links .icon {
+        width: 30px;
+        height: 30px;
+    }
 }
