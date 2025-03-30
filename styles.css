@@ -65,7 +65,13 @@ main {
     font-size: 16px; /* Размер шрифта */
     color: #fff; /* Цвет текста */
     text-align: center; /* Центрирование текста */
-    margin-top: 600px; /* Отступ сверху для левого текста */
+    margin-top: 10px; /* Отступ сверху для левого текста */
+}
+
+.left-text p:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
 }
 
 .right-text {
