@@ -56,17 +56,26 @@ main {
 }
 
 .image-container img {
-    max-width: 40%; /* Установите ширину изображения */
+    max-width: 90%; /* Установите ширину изображения */
     height: auto; /* Сохраняйте пропорции изображения */
 }
 
-.left-text, .right-text {
+.left-text {
     width: 25%; /* Ширина текста */
     font-size: 16px; /* Размер шрифта */
     color: #fff; /* Цвет текста */
     text-align: center; /* Центрирование текста */
-    margin-top: 10px; /* Отступ сверху */
+    margin-top: 50px; /* Отступ сверху для левого текста */
 }
+
+.right-text {
+    width: 25%; /* Ширина текста */
+    font-size: 16px; /* Размер шрифта */
+    color: #fff; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    margin-top: 10px;
+}
+
 footer {
     background-color: #111;
     padding: 10px;
