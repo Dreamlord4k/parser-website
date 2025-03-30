@@ -14,7 +14,11 @@
         <p id="typing-effect-paragraph">Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru</p>
         <p id="typing-effect-paragraph-2">С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.</p>
         <div class="image-container">
-            <p class="left-text">Текст слева от изображения</p>
+            <div class="left-text" id="left-text-container">
+                <p>Первая строка текста</p>
+                <p>Вторая строка текста</p>
+                <p>Третья строка текста</p>
+            </div>
             <img src="assets/galaxy.jpg" alt="Galaxy Background" class="background-image">
             <p class="right-text">Текст справа от изображения</p>
         </div>
@@ -31,55 +35,72 @@
         <p>© 2025 Syntax Parser. Все права защищены.</p>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const headerText = "Syntax Parser";
-            const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
-            const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
-            const headerElement = document.getElementById("typing-effect");
-            const paragraphElement1 = document.getElementById("typing-effect-paragraph");
-            const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
-            let headerIndex = 0;
-            let paragraphIndex1 = 0;
-            let paragraphIndex2 = 0;
-    
-            // Очистить текст перед началом анимации
-            headerElement.textContent = "";
-            paragraphElement1.textContent = "";
-            paragraphElement2.textContent = "";
-    
-            function typeHeader() {
-                if (headerIndex < headerText.length) {
-                    headerElement.textContent += headerText[headerIndex];
-                    headerIndex++;
-                    setTimeout(typeHeader, 100); // Скорость печати заголовка
-                } else {
-                    // После завершения анимации заголовка, начать анимацию первого параграфа
-                    setTimeout(typeParagraph1, 500); // Задержка перед началом анимации первого параграфа
-                }
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerText = "Syntax Parser";
+        const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
+        const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
+        const headerElement = document.getElementById("typing-effect");
+        const paragraphElement1 = document.getElementById("typing-effect-paragraph");
+        const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
+        const leftTextContainer = document.getElementById("left-text-container");
+        const leftTextLines = leftTextContainer.querySelectorAll("p");
+
+        let headerIndex = 0;
+        let paragraphIndex1 = 0;
+        let paragraphIndex2 = 0;
+        let leftTextIndex = 0;
+
+        // Очистить текст перед началом анимации
+        headerElement.textContent = "";
+        paragraphElement1.textContent = "";
+        paragraphElement2.textContent = "";
+        leftTextLines.forEach(line => line.style.opacity = "0"); // Скрыть строки слева
+
+        function typeHeader() {
+            if (headerIndex < headerText.length) {
+                headerElement.textContent += headerText[headerIndex];
+                headerIndex++;
+                setTimeout(typeHeader, 100); // Скорость печати заголовка
+            } else {
+                // После завершения анимации заголовка, начать анимацию первого параграфа
+                setTimeout(typeParagraph1, 500); // Задержка перед началом анимации первого параграфа
             }
-    
-            function typeParagraph1() {
-                if (paragraphIndex1 < paragraphText1.length) {
-                    paragraphElement1.textContent += paragraphText1[paragraphIndex1];
-                    paragraphIndex1++;
-                    setTimeout(typeParagraph1, 50); // Скорость печати первого параграфа
-                } else {
-                    // После завершения анимации первого параграфа, начать анимацию второго параграфа
-                    setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
-                }
+        }
+
+        function typeParagraph1() {
+            if (paragraphIndex1 < paragraphText1.length) {
+                paragraphElement1.textContent += paragraphText1[paragraphIndex1];
+                paragraphIndex1++;
+                setTimeout(typeParagraph1, 50); // Скорость печати первого параграфа
+            } else {
+                // После завершения анимации первого параграфа, начать анимацию второго параграфа
+                setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
             }
-    
-            function typeParagraph2() {
-                if (paragraphIndex2 < paragraphText2.length) {
-                    paragraphElement2.textContent += paragraphText2[paragraphIndex2];
-                    paragraphIndex2++;
-                    setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
-                }
+        }
+
+        function typeParagraph2() {
+            if (paragraphIndex2 < paragraphText2.length) {
+                paragraphElement2.textContent += paragraphText2[paragraphIndex2];
+                paragraphIndex2++;
+                setTimeout(typeParagraph2, 50); // Скорость печати второго параграфа
+            } else {
+                // После завершения анимации второго параграфа, начать анимацию строк слева
+                setTimeout(showLeftTextLines, 500); // Задержка перед началом анимации строк слева
             }
-    
-            // Запуск анимации заголовка
-            typeHeader();
-        });
+        }
+
+        function showLeftTextLines() {
+            if (leftTextIndex < leftTextLines.length) {
+                leftTextLines[leftTextIndex].style.opacity = "1"; // Плавное появление строки
+                leftTextLines[leftTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
+                leftTextIndex++;
+                setTimeout(showLeftTextLines, 1000); // Задержка перед появлением следующей строки
+            }
+        }
+
+        // Запуск анимации заголовка
+        typeHeader();
+    });
     </script>
 </body>
 </html>

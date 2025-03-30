@@ -95,7 +95,7 @@ footer {
 /* Стили для контейнера ссылок */
 .social-links {
     position: absolute; /* Позволяет задать точное положение */
-    top: 20px; /* Отступ от верхнего края */
+    top: 5px; /* Отступ от верхнего края */
     left: 20px; /* Отступ от левого края */
     display: flex; /* Расположение иконок в строку */
     gap: 10px; /* Расстояние между иконками */
@@ -116,8 +116,18 @@ footer {
 
 .social-links .icon:hover {
     transform: scale(1.2); /* Увеличение при наведении */
-    filter: brightness(1.5); /* Осветление при наведении */
+    filter: brightness(1); /* Осветление при наведении */
 }
+
+.left-text p {
+    opacity: 0; /* Скрыть строки по умолчанию */
+    transition: opacity 1s ease; /* Плавное появление */
+}
+
+.left-text p.visible {
+    opacity: 1; /* Сделать строку видимой */
+}
+
 
 @media (max-width: 768px) {
     .social-links .icon {
