@@ -136,6 +136,15 @@ footer {
     opacity: 1; /* Сделать строку видимой */
 }
 
+.additional-text {
+    margin-top: 20px; /* Отступ сверху */
+    font-size: 14px; /* Размер шрифта */
+    color: #ccc; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    opacity: 0; /* Скрываем текст по умолчанию */
+    transition: opacity 1s ease; /* Плавное появление */
+}
+
 
 @media (max-width: 768px) {
     .social-links .icon {
