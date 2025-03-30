@@ -56,7 +56,7 @@ main {
 }
 
 .image-container img {
-    max-width: 90%; /* Установите ширину изображения */
+    max-width: 60%; /* Установите ширину изображения */
     height: auto; /* Сохраняйте пропорции изображения */
 }
 
@@ -65,8 +65,8 @@ main {
     font-size: 16px; /* Размер шрифта */
     color: #fff; /* Цвет текста */
     text-align: center; /* Центрирование текста */
-    margin-top: 20px; /* Отступ сверху для левого текста */
-    padding-left: 20px; /* Внутренний отступ слева */
+    margin-top: 10px; /* Отступ сверху для левого текста */
+    padding-left: 10px; /* Внутренний отступ слева */
 }
 
 .left-text p:first-child {
@@ -81,7 +81,7 @@ main {
     color: #fff; /* Цвет текста */
     text-align: center; /* Центрирование текста */
     margin-top: 10px;
-    padding-left: 20px; /* Внутренний отступ справа */
+    padding-right: 10px; /* Внутренний отступ слева */
 }
 
 footer {
