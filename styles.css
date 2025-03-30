@@ -48,6 +48,24 @@ main {
     margin-top: 20px;
 }
 
+.image-container {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    justify-content: space-between; /* Пространство между элементами */
+    margin: 20px 0; /* Отступы сверху и снизу */
+}
+
+.image-container img {
+    max-width: 40%; /* Установите ширину изображения */
+    height: auto; /* Сохраняйте пропорции изображения */
+}
+
+.left-text, .right-text {
+    width: 25%; /* Ширина текста */
+    font-size: 16px; /* Размер шрифта */
+    color: #fff; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+}
 footer {
     background-color: #111;
     padding: 10px;
