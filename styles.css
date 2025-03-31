@@ -123,31 +123,30 @@ body { /* Add padding to body bottom to prevent footer overlap */
     padding-bottom: 60px; /* Adjust based on footer height */
 }
 /* Стили для контейнера ссылок */
-.social-links {
+.social-links.top-left {
+    position: absolute;
+    top: 15px;
+    left: 15px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 15px;
+    z-index: 10; /* Ensure icons are above other content */
 }
 
 /* Removed duplicate .social-links definition */
 
-.social-links a {
-    display: flex;
-    justify-content: left; /* Центрирование по горизонтали */
-    gap: 20px; /* Расстояние между иконками */
-    margin-bottom: 10px; /* Отступ снизу */
+.social-links.top-left a {
+    display: inline-block; /* Adjust display for positioning */
 }
 
-.social-links .icon {
-    width: 40px; /* Размер иконок */
-    height: 40px;
+.social-links.top-left .icon {
+    width: 30px; /* Adjust size for top-left placement */
+    height: 30px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.social-links .icon:hover {
-    transform: scale(1.2); /* Увеличение при наведении */
-    filter: brightness(1); /* Осветление при наведении */
+.social-links.top-left .icon:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2); /* Slightly brighter on hover */
 }
 
 .left-text p {
@@ -178,7 +177,30 @@ body { /* Add padding to body bottom to prevent footer overlap */
     margin-bottom: 0;
 }
 
+.download-button {
+    display: inline-block;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'minecraft', monospace; /* Match body font */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px; /* Space above the button */
+}
 
+.download-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+.download-button:active {
+    transform: scale(1); /* Reset scale on click */
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     header h1 {
@@ -209,17 +231,18 @@ body { /* Add padding to body bottom to prevent footer overlap */
         font-size: 20px; /* Adjust heading sizes */
      }
 
-    .social-links {
-        position: static; /* Make social links part of the flow */
-        justify-content: center;
-        margin-top: 30px;
-        margin-bottom: 20px; /* Add margin below links */
-    }
+        /* Adjust social links positioning for mobile if needed */
+        .social-links.top-left {
+            position: static; /* Revert to static for mobile */
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
-    .social-links .icon {
-        width: 35px;
-        height: 35px;
-    }
+        .social-links.top-left .icon {
+            width: 35px; /* Keep mobile icon size */
+            height: 35px;
+        }
 
     footer {
         position: static; /* Ensure footer is not fixed */
