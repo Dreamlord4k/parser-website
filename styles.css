@@ -190,7 +190,7 @@ body { /* Add padding to body bottom to prevent footer overlap */
     border-radius: 8px; /* Rounded corners */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 13px; /* Space above the button */
+    margin-top: 10px; /* Space above the button */
 }
 
 .download-button:hover {
