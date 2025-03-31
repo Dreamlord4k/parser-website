@@ -179,9 +179,9 @@ body { /* Add padding to body bottom to prevent footer overlap */
 
 .download-button {
     display: inline-block;
-    background-color: #b0b0b0; /* White-gray background */
+    background-color: #0c6b57; /* White-gray background */
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -190,7 +190,7 @@ body { /* Add padding to body bottom to prevent footer overlap */
     border-radius: 8px; /* Rounded corners */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 15px; /* Space above the button */
+    margin-top: 13px; /* Space above the button */
 }
 
 .download-button:hover {
