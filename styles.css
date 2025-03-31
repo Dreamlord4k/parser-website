@@ -50,23 +50,25 @@ main {
 
 .image-container {
     display: flex;
-    align-items: flex-start; /* Выравнивание по верхнему краю */
-    justify-content: space-between; /* Пространство между элементами */
-    margin: 20px 0; /* Отступы сверху и снизу */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-around; /* Distribute space */
+    gap: 20px; /* Add gap between flex items */
+    margin: 40px 20px; /* Adjust margins */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens if needed */
 }
 
 .image-container img {
-    max-width: 60%; /* Установите ширину изображения */
-    height: auto; /* Сохраняйте пропорции изображения */
+    max-width: 50%; /* Adjust image width */
+    height: auto;
+    border-radius: 10px; /* Optional: add rounded corners */
 }
 
 .left-text {
-    width: 25%; /* Ширина текста */
-    font-size: 16px; /* Размер шрифта */
-    color: #fff; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-    margin-top: 10px; /* Отступ сверху для левого текста */
-    padding-left: 10px; /* Внутренний отступ слева */
+    width: 20%; /* Adjust text width */
+    font-size: 16px;
+    color: #fff;
+    text-align: left; /* Align text left */
+    padding: 0 10px; /* Add padding */
 }
 
 .left-text p:first-child {
@@ -76,21 +78,49 @@ main {
 }
 
 .right-text {
-    width: 25%; /* Ширина текста */
-    font-size: 16px; /* Размер шрифта */
-    color: #fff; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-    margin-top: 10px;
-    padding-right: 10px; /* Внутренний отступ слева */
+    width: 20%; /* Adjust text width */
+    font-size: 16px;
+    color: #fff;
+    text-align: left; /* Align text left */
+    padding: 0 10px; /* Add padding */
+}
+
+.right-text h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+.right-text ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.right-text li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Styles for animation */
+.right-text h3,
+.right-text li {
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
 footer {
     background-color: #111;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
+    position: relative; /* Changed from fixed */
+    bottom: auto; /* Reset bottom */
     width: 100%;
-    margin-top: 40px; 
+    margin-top: 40px;
+    padding-bottom: 10px; /* Add padding to prevent overlap */
+}
+
+body { /* Add padding to body bottom to prevent footer overlap */
+    padding-bottom: 60px; /* Adjust based on footer height */
 }
 /* Стили для контейнера ссылок */
 .social-links {
@@ -100,14 +130,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Стили для контейнера ссылок */
-.social-links {
-    position: absolute; /* Позволяет задать точное положение */
-    top: 5px; /* Отступ от верхнего края */
-    left: 20px; /* Отступ от левого края */
-    display: flex; /* Расположение иконок в строку */
-    gap: 10px; /* Расстояние между иконками */
-}
+/* Removed duplicate .social-links definition */
 
 .social-links a {
     display: flex;
@@ -136,19 +159,78 @@ footer {
     opacity: 1; /* Сделать строку видимой */
 }
 
-.additional-text {
-    margin-top: 20px; /* Отступ сверху */
-    font-size: 14px; /* Размер шрифта */
-    color: #ccc; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-    opacity: 0; /* Скрываем текст по умолчанию */
-    transition: opacity 1s ease; /* Плавное появление */
+.additional-info {
+    margin: 30px 20px; /* Add margin */
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    border-radius: 8px;
+    text-align: center;
+}
+
+.additional-info p {
+    font-size: 16px; /* Adjust font size */
+    color: #ddd; /* Adjust color */
+    line-height: 1.6;
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.additional-info p:last-child {
+    margin-bottom: 0;
 }
 
 
+/* Responsive Design */
 @media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .image-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        margin: 20px 10px; /* Adjust margin for mobile */
+    }
+
+    .left-text,
+    .right-text,
+    .image-container img {
+        width: 90%; /* Make elements take more width */
+        max-width: 400px; /* Optional: constrain max width */
+        text-align: center; /* Center text on mobile */
+        margin-bottom: 20px; /* Add space below each item */
+    }
+
+     .left-text p:first-child,
+     .right-text h3 {
+        font-size: 20px; /* Adjust heading sizes */
+     }
+
+    .social-links {
+        position: static; /* Make social links part of the flow */
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 20px; /* Add margin below links */
+    }
+
     .social-links .icon {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
+    }
+
+    footer {
+        position: static; /* Ensure footer is not fixed */
+        margin-top: 20px;
+    }
+
+    body {
+        padding-bottom: 20px; /* Adjust body padding */
+    }
+
+    .additional-info {
+        margin: 20px 10px;
     }
 }

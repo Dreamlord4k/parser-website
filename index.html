@@ -19,13 +19,22 @@
                 <p>1. Удобный формат просмотра оценок</p>
                 <p>2. Отсутствие необходимости постоянно логиниться на сайт</p>
                 <p>3. Уведомления о новых оценках и пропусках</p>
-                <div class="additional-text" id="additional-text-container">
-                    <p>Это один из самых масштабных проектов лицея (конечно тапалка не в счет)</p>
-                    <p>И все это реализовано без какого-либо api для разработчиков</p>
-                </div>
+                <p>4. Полностью открытый исходный код программы.</p>
             </div>
             <img src="assets/galaxy.jpg" alt="Galaxy Background" class="background-image">
-            <p class="right-text">Текст справа от изображения</p>
+            <div class="right-text" id="right-text-container">
+                <h3>Как это работает?</h3>
+                <ul>
+                    <li>Есть сервер, где находится база данных и телеграмм бот</li>
+                    <li>Со стороны пользователя нужно лишь проследовать инструкцям на github и держать открытой консоль</li>
+                    <li>При любом добавлении оценки - вам придет уведомление.</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div class="additional-info">
+             <p>Это один из самых масштабных проектов лицея (конечно тапалка не в счет)</p>
+             <p>И все это реализовано без какого-либо API для разработчиков</p>
         </div>
     </main>
     <div class="social-links">
@@ -48,22 +57,21 @@
         const paragraphElement1 = document.getElementById("typing-effect-paragraph");
         const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
         const leftTextContainer = document.getElementById("left-text-container");
-        const leftTextLines = leftTextContainer.querySelectorAll("p:not(.additional-text p)");
-        const additionalTextContainer = document.getElementById("additional-text-container");
-        const additionalTextLines = additionalTextContainer.querySelectorAll("p");
+        const leftTextLines = leftTextContainer.querySelectorAll("p"); // Get all <p> elements in left container
+        const rightTextContainer = document.getElementById("right-text-container");
+        const rightTextElements = rightTextContainer.querySelectorAll("h3, li"); // Get heading and list items in right container
 
         let headerIndex = 0;
         let paragraphIndex1 = 0;
         let paragraphIndex2 = 0;
-        let leftTextIndex = 0;
-        let additionalTextIndex = 0;
-
+        let leftTextIndex = 0; // Index for left text lines animation
+        let rightTextIndex = 0; // Index for right text elements animation
         // Очистить текст перед началом анимации
         headerElement.textContent = "";
         paragraphElement1.textContent = "";
         paragraphElement2.textContent = "";
-        leftTextLines.forEach(line => line.style.opacity = "0"); // Скрыть строки слева
-        additionalTextLines.forEach(line => line.style.opacity = "0"); // Скрыть строки дополнительного текста
+        leftTextLines.forEach(line => line.style.opacity = "0"); // Hide left text lines initially
+        rightTextElements.forEach(el => el.style.opacity = "0"); // Hide right text elements initially
 
         function typeHeader() {
             if (headerIndex < headerText.length) {
@@ -80,7 +88,7 @@
             if (paragraphIndex1 < paragraphText1.length) {
                 paragraphElement1.textContent += paragraphText1[paragraphIndex1];
                 paragraphIndex1++;
-                setTimeout(typeParagraph1, 30); // Скорость печати первого параграфа
+                setTimeout(typeParagraph1, 60); // Скорость печати первого параграфа
             } else {
                 // После завершения анимации первого параграфа, начать анимацию второго параграфа
                 setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
@@ -91,7 +99,7 @@
             if (paragraphIndex2 < paragraphText2.length) {
                 paragraphElement2.textContent += paragraphText2[paragraphIndex2];
                 paragraphIndex2++;
-                setTimeout(typeParagraph2, 25); // Скорость печати второго параграфа
+                setTimeout(typeParagraph2, 45); // Скорость печати второго параграфа
             } else {
                 // После завершения анимации второго параграфа, начать анимацию строк слева
                 setTimeout(showLeftTextLines, 500); // Задержка перед началом анимации строк слева
@@ -103,25 +111,25 @@
                 leftTextLines[leftTextIndex].style.opacity = "1"; // Плавное появление строки
                 leftTextLines[leftTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
                 leftTextIndex++;
-                setTimeout(showLeftTextLines, 1000); // Задержка перед появлением следующей строки
+                setTimeout(showLeftTextLines, 1300); // Delay before showing the next left line
             } else {
-                // После завершения анимации строк слева, начать анимацию дополнительного текста
-                setTimeout(showAdditionalTextLines, 500);
+                // After showing all left lines, start showing right text elements
+                setTimeout(showRightTextElements, 500); // Delay before starting right text animation
             }
         }
 
-        function showAdditionalTextLines() {
-            if (additionalTextIndex < additionalTextLines.length) {
-                additionalTextLines[additionalTextIndex].style.opacity = "1"; // Плавное появление строки
-                additionalTextLines[additionalTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
-                additionalTextIndex++;
-                setTimeout(showAdditionalTextLines, 1000); // Задержка перед появлением следующей строки
+        function showRightTextElements() {
+            if (rightTextIndex < rightTextElements.length) {
+                rightTextElements[rightTextIndex].style.opacity = "1"; // Fade in the element
+                rightTextElements[rightTextIndex].style.transition = "opacity 1s ease"; // Animation effect
+                rightTextIndex++;
+                setTimeout(showRightTextElements, 1000); // Delay before showing the next right element
             }
         }
 
-        // Запуск анимации заголовка
+        // Start the header typing animation
         typeHeader();
-    }); 
+    });
     </script>
 </body>
 </html>
