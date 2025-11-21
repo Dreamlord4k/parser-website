@@ -3,149 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syntax Parser</title>
-    <meta name="description" content="Парсер оценок и пропусков из электронного дневника dnevnik.egov66.ru. Уведомления о новых оценках и пропусках.">
-    <meta name="keywords" content="dnevnik.egov66.ru, dnevnikegov66, syntax, syntax parser, dnevnik egov, dnevnik egov 66">
-    <meta name="author" content="Dreamlord4k">
-    <link rel="stylesheet" href="styles.css">
+    <title>MISSION COMPLETE</title>
+    <style>
+        /* --- СТИЛИ (CSS) --- */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0d1117; /* Тёмный фон GitHub */
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace; /* Хакерский шрифт */
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Заголовок ПОЗДРАВЛЯЮ */
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            /* Неоновое свечение */
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00; 
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        /* Текст "стоп, а где..." */
+        .subtext {
+            font-size: 1.5rem;
+            color: #8b949e; /* Серый цвет */
+            margin-top: 20px;
+            opacity: 0;
+            /* Появляется через 3 секунды */
+            animation: fadeIn 1s ease-in-out 3s forwards; 
+        }
+
+        /* Курсор как в консоли */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #8b949e;
+            animation: blink 1s infinite;
+        }
+
+        /* Анимации */
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Адаптив для телефонов */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtext { font-size: 1rem; }
+        }
+    </style>
+    
+    <!-- Подключаем библиотеку для конфетти -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <div class="social-links top-left">
-        <a href="https://github.com/Dreamlord4k" target="_blank" rel="noopener noreferrer">
-            <img src="assets/icons/github.png" alt="GitHub" class="icon">
-        </a>
-        <a href="https://t.me/MrCrstll" target="_blank" rel="noopener noreferrer">
-            <img src="assets/icons/telegram.png" alt="Telegram" class="icon">
-        </a>
+
+    <div class="container">
+        <h1>ПОЗДРАВЛЯЮ!</h1>
+        <div class="subtext">
+            стоп, а где...<span class="cursor">_</span>
+        </div>
     </div>
-    <header>
-        <h1 id="typing-effect">Syntax Parser</h1>
-    </header>
-    <main>
-        <p id="typing-effect-paragraph">Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru</p>
-        <p id="typing-effect-paragraph-2">С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.</p>
-        <div class="image-container">
-            <div class="left-text" id="left-text-container">
-                <p>Что мы предлагаем?</p>
-                <p>1. Удобный формат просмотра оценок</p>
-                <p>2. Отсутствие необходимости постоянно логиниться на сайт электронного дневника</p>
-                <p>3. Уведомления о новых оценках и пропусках</p>
-                <p>4. Полностью открытый исходный код программы.</p>
-                <p>5. Теоретически рабочую программу</p>
-            </div>
-            <img src="assets/galaxy.jpg" alt="Galaxy Background" class="background-image">
-            <div class="right-text" id="right-text-container">
-                <h3>Как это работает?</h3>
-                <ul>
-                    <li>- Есть сервер, где находится база данных и telegram бот</li>
-                    <li>- Со стороны пользователя нужно лишь проследовать инструкциям на github и держать открытой консоль</li>
-                    <li>- Программа будет сканировать оценки каждые 30 секунд</li>
-                    <li>- При любом добавлении оценки вам придет уведомление.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="additional-info">
-             <p>Это один из самых масштабных проектов <b>лицея 12</b> (разумеется после тапалки).</p>
-             <p>Оказывается, все это время существовало api... постепенно будем разрабатывать новую версию.</p>
-             <p><b>Скачать можно на github, там же все инструкции и исходный код.</b></p>
-             <a href="https://github.com/Dreamlord4k/dnevnik.egov66.ru-parser" target="_blank" rel="noopener noreferrer" class="download-button">проект закрыт</a>
-             <p>В случае каких-либо вопросов пишите мне в telegram.</p>
-        </div>
-    </main>
-    <footer>
-        <p>© 2025 Syntax Parser. Все права защищены.(я лично защитил)</p>
-    </footer>
+
+    <!-- 
+    ========================================================================
+       Эй, я вижу, ты любишь копаться в исходном коде. Похвально.
+       
+       Ева передает тебе последний привет.
+       Ты прошел долгий путь.
+       
+       Вот твоя награда:
+       FLAG{h7ml_c0mm3n7s_4r3_n07_s3cr37_p1ac3}
+       
+       (100 баллов твои. Беги сдавать.)
+    ========================================================================
+    -->
+
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const headerText = "Syntax Parser";
-        const paragraphText1 = "Этот проект позволяет парсить оценки и пропуски из электронного дневника dnevnik.egov66.ru";
-        const paragraphText2 = "С помощью этого проекта вы сможете легко отслеживать свои оценки, а также получать уведомления о любых изменениях.";
-        const headerElement = document.getElementById("typing-effect");
-        const paragraphElement1 = document.getElementById("typing-effect-paragraph");
-        const paragraphElement2 = document.getElementById("typing-effect-paragraph-2");
-        const leftTextContainer = document.getElementById("left-text-container");
-        const leftTextLines = leftTextContainer.querySelectorAll("p"); // Get all <p> elements in left container
-        const rightTextContainer = document.getElementById("right-text-container");
-        const rightTextElements = rightTextContainer.querySelectorAll("h3, li"); // Get heading and list items in right container
+        // --- СКРИПТ ДЛЯ САЛЮТА ---
+        
+        // Функция запуска конфетти
+        function launchConfetti() {
+            var duration = 3000; // Салют длится 3 секунды
+            var end = Date.now() + duration;
 
-        let headerIndex = 0;
-        let paragraphIndex1 = 0;
-        let paragraphIndex2 = 0;
-        let leftTextIndex = 0; // Index for left text lines animation
-        let rightTextIndex = 0; // Index for right text elements animation
-        // Очистить текст перед началом анимации
-        headerElement.textContent = "";
-        paragraphElement1.textContent = "";
-        paragraphElement2.textContent = "";
-        leftTextLines.forEach(line => line.style.opacity = "0"); // Hide left text lines initially
-        rightTextElements.forEach(el => el.style.opacity = "0"); // Hide right text elements initially
+            (function frame() {
+                // Запускаем с двух сторон экрана
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#00ff00', '#ffffff', '#ff00ff'] // Хакерские цвета
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#00ff00', '#ffffff', '#ff00ff']
+                });
 
-        function typeHeader() {
-            if (headerIndex < headerText.length) {
-                headerElement.textContent += headerText[headerIndex];
-                headerIndex++;
-                setTimeout(typeHeader, 100); // Скорость печати заголовка
-            } else {
-                // После завершения анимации заголовка, начать анимацию первого параграфа
-                setTimeout(typeParagraph1, 500); // Задержка перед началом анимации первого параграфа
-            }
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
         }
 
-        function typeParagraph1() {
-            if (paragraphIndex1 < paragraphText1.length) {
-                paragraphElement1.textContent += paragraphText1[paragraphIndex1];
-                paragraphIndex1++;
-                setTimeout(typeParagraph1, 60); // Скорость печати первого параграфа
-            } else {
-                // После завершения анимации первого параграфа, начать анимацию второго параграфа
-                setTimeout(typeParagraph2, 500); // Задержка перед началом анимации второго параграфа
-            }
-        }
-
-        function typeParagraph2() {
-            if (paragraphIndex2 < paragraphText2.length) {
-                paragraphElement2.textContent += paragraphText2[paragraphIndex2];
-                paragraphIndex2++;
-                setTimeout(typeParagraph2, 45); // Скорость печати второго параграфа
-            } else {
-                // После завершения анимации второго параграфа, начать анимацию строк слева
-                setTimeout(showLeftTextLines, 500); // Задержка перед началом анимации строк слева
-            }
-        }
-
-        function showLeftTextLines() {
-            if (leftTextIndex < leftTextLines.length) {
-                leftTextLines[leftTextIndex].style.opacity = "1"; // Плавное появление строки
-                leftTextLines[leftTextIndex].style.transition = "opacity 1s ease"; // Анимация появления
-                leftTextIndex++;
-                setTimeout(showLeftTextLines, 1300); // Delay before showing the next left line
-            } else {
-                // After showing all left lines, start showing right text elements
-                setTimeout(showRightTextElements, 500); // Delay before starting right text animation
-            }
-        }
-
-        function showRightTextElements() {
-            if (rightTextIndex < rightTextElements.length) {
-                rightTextElements[rightTextIndex].style.opacity = "1"; // Fade in the element
-                rightTextElements[rightTextIndex].style.transition = "opacity 1s ease"; // Animation effect
-                rightTextIndex++;
-                setTimeout(showRightTextElements, 1000); // Delay before showing the next right element
-            }
-        }
-
-        // Start the header typing animation
-        typeHeader();
-    });
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2ZBRDZV1G"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-S2ZBRDZV1G');
+        // Запускаем сразу при загрузке страницы
+        window.onload = launchConfetti;
+        
+        // Если кликнуть по экрану - снова салют (для веселья)
+        document.addEventListener('click', () => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
     </script>
 </body>
 </html>
