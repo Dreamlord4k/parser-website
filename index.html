@@ -13,9 +13,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #0d1117; /* Тёмный фон GitHub */
+            background-color: #0d1117;
             color: #ffffff;
-            font-family: 'Courier New', Courier, monospace; /* Хакерский шрифт */
+            font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             user-select: none;
         }
@@ -25,45 +25,47 @@
             z-index: 10;
         }
 
-        /* Заголовок ПОЗДРАВЛЯЮ */
+        /* Заголовок теперь без анимации zoom, но с курсором */
         h1 {
             font-size: 5rem;
             margin: 0;
-            /* Неоновое свечение */
+            min-height: 1.2em; /* Чтобы текст не прыгал */
             text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00; 
-            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            opacity: 0;
-            transform: scale(0.5);
+            display: inline-block;
+        }
+
+        /* Курсор для заголовка */
+        .cursor-main {
+            display: inline-block;
+            width: 15px;
+            height: 60px;
+            background-color: #00ff00;
+            vertical-align: middle;
+            margin-left: 15px;
+            box-shadow: 0 0 15px #00ff00;
+            animation: blink 0.8s infinite;
+            transform: translateY(-21px);
         }
 
         /* Текст "стоп, а где..." */
         .subtext {
-            font-size: 1.5rem;
-            color: #8b949e; /* Серый цвет */
+            font-size: 3rem;
+            color: #8b949e;
             margin-top: 20px;
             opacity: 0;
-            /* Появляется через 3 секунды */
-            animation: fadeIn 1s ease-in-out 3s forwards; 
+            /* Класс .visible добавит скрипт, когда допишет заголовок */
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .subtext.visible {
+            opacity: 1;
         }
 
-        /* Курсор как в консоли */
-        .cursor {
+        .cursor-sub {
             display: inline-block;
             width: 10px;
             background-color: #8b949e;
             animation: blink 1s infinite;
-        }
-
-        /* Анимации */
-        @keyframes popIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
         }
 
         @keyframes blink {
@@ -71,55 +73,69 @@
             50% { opacity: 0; }
         }
         
-        /* Адаптив для телефонов */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
+            .cursor-main { height: 30px; width: 8px; }
             .subtext { font-size: 1rem; }
         }
     </style>
     
-    <!-- Подключаем библиотеку для конфетти -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
     <div class="container">
-        <h1>ПОЗДРАВЛЯЮ!</h1>
-        <div class="subtext">
-            стоп, а где...<span class="cursor">_</span>
+        <!-- Заголовок пустой, текст добавит JS -->
+        <h1 id="typewriter"></h1><span class="cursor-main"></span>
+        
+        <div class="subtext" id="subtext">
+            стоп, а где...<span class="cursor-sub">_</span>
         </div>
     </div>
 
-    <!-- 
-    ========================================================================
-       Эй, я вижу, ты любишь копаться в исходном коде. Похвально.
-       
-       Ева передает тебе последний привет.
-       Ты прошел долгий путь.
-       
-       Вот твоя награда:
-       FLAG{h7ml_c0mm3n7s_4r3_n07_s3cr37_p1ac3}
-       
-       (100 баллов твои. Беги сдавать.)
-    ========================================================================
-    -->
 
+<!-- Похвально.  -->
+<!-- Ева передает тебе последний привет. -->
+<!-- Ты прошел долгий путь. -->
+<!-- Вот твоя награда: -->
+<!--SYNTAX{y0u_aRe_oN_ToP}-->
+<!--(100 баллов твои)-->
     <script>
+        // --- КОНФИГУРАЦИЯ ---
+        const textToType = "ПОЗДРАВЛЯЮ!";
+        const typingSpeed = 300; // Скорость печати (мс на букву)
+        const startDelay = 500;  // Пауза перед началом (мс)
+
+        // --- СКРИПТ ПЕЧАТНОЙ МАШИНКИ ---
+        const titleElement = document.getElementById('typewriter');
+        const subtextElement = document.getElementById('subtext');
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textToType.length) {
+                titleElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                // Когда допечатали заголовок -> показываем нижний текст
+                setTimeout(() => {
+                    subtextElement.classList.add('visible');
+                }, 5000);
+            }
+        }
+
         // --- СКРИПТ ДЛЯ САЛЮТА ---
-        
-        // Функция запуска конфетти
         function launchConfetti() {
-            var duration = 3000; // Салют длится 3 секунды
+            var duration = 3000;
             var end = Date.now() + duration;
 
             (function frame() {
-                // Запускаем с двух сторон экрана
                 confetti({
                     particleCount: 5,
                     angle: 60,
                     spread: 55,
                     origin: { x: 0 },
-                    colors: ['#00ff00', '#ffffff', '#ff00ff'] // Хакерские цвета
+                    colors: ['#00ff00', '#ffffff', '#ff00ff']
                 });
                 confetti({
                     particleCount: 5,
@@ -135,15 +151,22 @@
             }());
         }
 
-        // Запускаем сразу при загрузке страницы
-        window.onload = launchConfetti;
+        // ЗАПУСК
+        window.onload = () => {
+            launchConfetti(); // Сразу салют
+            setTimeout(typeText, startDelay); // Чуть погодя начинаем печатать
+        };
         
-        // Если кликнуть по экрану - снова салют (для веселья)
-        document.addEventListener('click', () => {
+        // Салют по клику в месте курсора
+        document.addEventListener('click', (e) => {
+            // Вычисляем координаты от 0 до 1
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
             confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
+                particleCount: 100, // Сколько частиц
+                spread: 40,         // Разброс
+                origin: { x: x, y: y } // Координаты клика
             });
         });
     </script>
